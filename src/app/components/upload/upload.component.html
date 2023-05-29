@@ -1,0 +1,19 @@
+<input type="file" class="file-input"
+       (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload">
+  <p class="file-descr">
+    Загрузите файл или вставьте фрагмент в поле ввода
+  </p>
+
+  <div class="file-inner">
+    <button color="primary" class="upload-btn"
+      (click)="fileUpload.click()">
+        Загрузить файл
+    </button>
+
+    <span class="file-name">
+      {{fileName || "Файл не выбран"}}
+    </span>
+  </div>
+</div>

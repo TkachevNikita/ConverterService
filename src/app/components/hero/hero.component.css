@@ -1,0 +1,31 @@
+.hero {
+  border-bottom: 1px solid #EF8502;
+}
+
+.hero__container {
+  margin: 100px 0;
+}
+
+.hero__title {
+  color: #EF8502;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.hero__descr {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  width: 50vw;
+}
+
+.hero__descr,
+.hero__item {
+  color: white;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+.hero__list {
+  padding-left: 40px;
+}

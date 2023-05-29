@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #EF8502;
+}
+
+.header__logo svg {
+  width: 170px;
+  height: 80px;
+  margin: 20px 0;
+}

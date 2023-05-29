@@ -1,0 +1,52 @@
+<form class="form" [formGroup]="registrationForm">
+  <div class="form__group upload">
+    <input type="file" class="file-input"
+       (change)="onFileSelected($event)" #fileUpload [formControlName]="'userFile'" id="userFile" required>
+    <div class="file-upload">
+      <p class="file-descr">
+        Загрузите файл или вставьте фрагмент в поле ввода
+      </p>
+      <div class="file-inner">
+        <button color="primary" class="upload-btn"
+          (click)="fileUpload.click()">
+            Загрузить файл
+        </button>
+        <span class="file-name">
+          {{fileName || "Файл не выбран"}}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="form__group-container">
+    <div class="form__input-container">
+      <label for="userInput">Ввод:</label>
+      <div class="form__group select__container">
+        <mat-form-field>
+          <mat-select placeholder="ТИП ДАННЫХ" multiple panelClass="brdr" disableRipple [formControlName]="'userType'">
+            <mat-option *ngFor="let type of types" panelClass="option" [value]="type.value" style="color:#EF8502;">
+              {{ type.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select matMenuPosition="below" placeholder="ФОРМАТ" panelClass="brdr" disableRipple [formControlName]="'userFormat'">
+            <mat-option *ngFor="let format of formats" [value]="format.value" panelClass="option" style="color:#EF8502;">
+              {{ format.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <textarea id="input" placeholder="Вставьте содержимое файла" name="userInput" type="text" [formControlName]="'userInput'"></textarea>
+    </div>
+    <button class="btn-submit" (click)="onSubmit()">
+      <svg width="63" height="46" viewBox="0 0 63 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M62.1213 25.1213C63.2929 23.9497 63.2929 22.0503 62.1213 20.8787L43.0294 1.7868C41.8579 0.615223 39.9584 0.615223 38.7868 1.7868C37.6152 2.95837 37.6152 4.85786 38.7868 6.02944L55.7574 23L38.7868 39.9706C37.6152 41.1421 37.6152 43.0416 38.7868 44.2132C39.9584 45.3848 41.8579 45.3848 43.0294 44.2132L62.1213 25.1213ZM0 26L60 26V20L0 20L0 26Z" fill="white"/>
+      </svg>
+    </button>
+    <div class="form__input-container" style="justify-content: space-between;">
+      <label for="userInput">Вывод:</label>
+      <textarea id="input" [formControlName]="'userOutput'" placeholder="Отоформатированное содержимое" name="userInput" type="text"></textarea>
+    </div>
+  </div>
+</form>
+

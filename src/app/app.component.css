@@ -1,0 +1,11 @@
+.container {
+  margin: 0 100px;
+  margin-bottom: 120px;
+  border-bottom: 1px solid #EF8502;
+}
+
+@media(max-width: 1300px) {
+  .container {
+    margin: 0 50px;
+  }
+}

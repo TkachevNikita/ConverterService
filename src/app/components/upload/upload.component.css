@@ -1,0 +1,42 @@
+.file-input {
+  display: none;
+}
+
+.file-upload {
+  display: inline-block;
+}
+
+.file-name,
+.upload-btn {
+  color: white;
+  outline: 1px solid #EF8502;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 5px 10px;
+}
+
+.upload-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color .3s ease-in-out;
+}
+
+.upload-btn:hover {
+  background-color: #EF8502;
+}
+
+.file-inner {
+  display: flex;
+}
+
+.file-descr {
+  margin: 0;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  color: white;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 600;
+  width: 36vw;
+}
