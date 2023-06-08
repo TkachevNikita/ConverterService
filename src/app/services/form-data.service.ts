@@ -1,28 +1,36 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, delay, map, of } from 'rxjs';
+import { FormGroup } from '@angular/forms';
+import { switchMap } from 'rxjs';
+import { ModalService } from './modal.service';
+import { ErrorModalComponent } from '../components/modals/error-modal/error-modal.component';
+import { ErrorHandlerService } from './error-handler.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 
 export class FormDataSevice {
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private _modalService: ModalService,
+    private _errorHandler: ErrorHandlerService
+  ) {}
 
+  public requestData(formData: FormData, registrationForm: FormGroup): void {
+      this.http.post('http://45.12.236.36/upload', formData)
+          .pipe(
+              switchMap((response: any) => {
+                return this.http.get('http://45.12.236.36/convert/' + response.file_name);
+              })
+          )
+          .subscribe({
+              next: (finalResponse: any) => {
+                  registrationForm.patchValue({userOutput: JSON.stringify(finalResponse, null, 1)})
+              },
+              error: (error: any) => {
+                  this._modalService.openModal(ErrorModalComponent, this._errorHandler.getError(error))
+              }
+          })
   }
 
-  // public getEmployees(fileNamePost: string, input: any): string {
-  //   const formData = new FormData();
-  //   if (input.files && input.files.length > 0) {
-  //     const file = input.files[0];
-  //     formData.append('uploaded_file', file)
-  //     this.http.post('http://127.0.0.1:8000/upload', formData)
-  //       .subscribe(
-  //         (response: any) => fileNamePost = response.file_name
-  //     );
-  //   }
-
-  //   return fileNamePost;
-  // }
 }

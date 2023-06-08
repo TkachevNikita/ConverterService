@@ -1,9 +1,7 @@
 <div class="container">
   <app-header></app-header>
   <app-hero></app-hero>
-  <app-form (showError)="openModal()" (showErrorTitle)="receiveMessage($event)" (showErrorText)="receiveText($event)"></app-form>
-  <app-dialog-error (closeModalEvent)="closeModal()" [errorTitle]="message" [errorText]="text" [isOpenModal]="modalIsOpen">
-  </app-dialog-error>
+  <app-form></app-form>
 </div>
 
 

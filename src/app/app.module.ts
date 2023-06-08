@@ -10,7 +10,11 @@ import { UploadComponent } from './components/upload/upload.component';
 import { SelectComponent } from './components/select/select.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select'
-import { DialogErrorComponent } from './components/dialogs/dialog-error/dialog-error.component';
+import { FormDataSevice } from './services/form-data.service';
+import { ModalService } from './services/modal.service';
+import { ErrorModalComponent } from './components/modals/error-modal/error-modal.component';
+import { FormsModule } from '@angular/forms';
+import { ErrorHandlerService } from './services/error-handler.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,7 @@ import { DialogErrorComponent } from './components/dialogs/dialog-error/dialog-e
     HeroComponent,
     UploadComponent,
     SelectComponent,
-    DialogErrorComponent
+    ErrorModalComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +31,13 @@ import { DialogErrorComponent } from './components/dialogs/dialog-error/dialog-e
     BrowserAnimationsModule,
     MatSelectModule,
     FormComponent,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    FormDataSevice,
+    ModalService,
+    ErrorHandlerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

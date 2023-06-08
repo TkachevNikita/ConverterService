@@ -21,20 +21,7 @@
     <div class="form__input-container">
       <label for="userInput">Ввод:</label>
       <div class="form__group select__container">
-        <mat-form-field>
-          <mat-select placeholder="ТИП ДАННЫХ" multiple panelClass="brdr" disableRipple [formControlName]="'userType'">
-            <mat-option *ngFor="let type of types" panelClass="option" [value]="type.value" style="color:#EF8502;">
-              {{ type.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-select matMenuPosition="below" placeholder="ФОРМАТ" panelClass="brdr" disableRipple [formControlName]="'userFormat'">
-            <mat-option *ngFor="let format of formats" [value]="format.value" panelClass="option" style="color:#EF8502;">
-              {{ format.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+
       </div>
       <textarea id="input" placeholder="Вставьте содержимое файла" name="userInput" type="text" [formControlName]="'userInput'"></textarea>
     </div>
