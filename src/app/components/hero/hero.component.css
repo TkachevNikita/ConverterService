@@ -3,29 +3,44 @@
 }
 
 .hero__container {
-  margin: 100px 0;
+  margin: 50px 0;
 }
 
 .hero__title {
   color: #EF8502;
-  font-size: 40px;
+  font-size: 34px;
   font-weight: 700;
 }
 
 .hero__descr {
-  margin-top: 50px;
-  margin-bottom: 30px;
-  width: 50vw;
+  margin-top: 20px;
+  width: 45vw;
 }
 
 .hero__descr,
 .hero__item {
   color: white;
-  font-size: 32px;
-  line-height: 32px;
+  font-size: 24px;
+  line-height: 24px;
   font-weight: 600;
 }
 
 .hero__list {
   padding-left: 40px;
+}
+
+@media(max-width: 1300px) {
+  .hero__descr,
+  .hero__item {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .hero__descr {
+    margin-top: 20px;
+  }
+
+  .hero__title {
+    font-size: 30px;
+  }
 }

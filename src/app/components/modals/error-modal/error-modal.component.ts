@@ -24,7 +24,7 @@ export class ErrorModalComponent {
     public animateStatus: string = ':enter';
     constructor(private _modalService: ModalService) {}
 
-    public closeModal() {
+    public closeModal(): void {
       this._modalService.closeModal();
     }
 

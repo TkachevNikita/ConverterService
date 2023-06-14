@@ -4,7 +4,7 @@
        (change)="onFileSelected($event)" #fileUpload [formControlName]="'userFile'" id="userFile" required>
     <div class="file-upload">
       <p class="file-descr">
-        Загрузите файл или вставьте фрагмент в поле ввода
+        Загрузите файл соответствующего формата
       </p>
       <div class="file-inner">
         <button color="primary" class="upload-btn"
@@ -21,7 +21,8 @@
     <div class="form__input-container">
       <label for="userInput">Ввод:</label>
       <div class="form__group select__container">
-
+        <app-custom-select [formControlName]="'userType'" [options]="types" [multiple]="true"></app-custom-select>
+        <app-custom-select [formControlName]="'userType'" [options]="types" [multiple]="true"></app-custom-select>
       </div>
       <textarea id="input" placeholder="Вставьте содержимое файла" name="userInput" type="text" [formControlName]="'userInput'"></textarea>
     </div>

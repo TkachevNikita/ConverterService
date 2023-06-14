@@ -13,8 +13,10 @@ import { MatSelectModule } from '@angular/material/select'
 import { FormDataSevice } from './services/form-data.service';
 import { ModalService } from './services/modal.service';
 import { ErrorModalComponent } from './components/modals/error-modal/error-modal.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorHandlerService } from './services/error-handler.service';
+import { CustomSelectComponent } from './components/custom-controls/custom-select/custom-select-control.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,21 +25,24 @@ import { ErrorHandlerService } from './services/error-handler.service';
     HeroComponent,
     UploadComponent,
     SelectComponent,
-    ErrorModalComponent
+    ErrorModalComponent,
+    CustomSelectComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatSelectModule,
-    FormComponent,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     FormDataSevice,
     ModalService,
     ErrorHandlerService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

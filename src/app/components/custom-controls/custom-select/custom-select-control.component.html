@@ -1,0 +1,12 @@
+<div class="select" [ngClass]="{'select-active': dropDownIsOpen}">
+  <div class="select__current" (click)="onOpenSelect()">
+    {{ drawValue() }}
+  </div>
+  <div class="select__dropdown" [ngClass]="{'openDropDown': dropDownIsOpen}">
+    <ul class="select__list">
+      <li class="select__option" (click)="onSelect(option);" *ngFor="let option of options; let i = index;">
+        {{option}}
+      </li>
+    </ul>
+  </div>
+</div>

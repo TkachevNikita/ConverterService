@@ -7,13 +7,14 @@
   padding: 30px 35px;
   background-color: #2E2E2E;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 24px;
   border: none;
   outline: 3px solid #EF8502;
   height: 570px;
   max-width: 100%;
   border-radius: 30px;
   resize: none;
+  overflow: hidden;
 }
 
 .input-title {
@@ -32,8 +33,9 @@ app-custom-select:not(:last-child) {
 }
 
 .select__container {
-  margin-top: 20px;
+  margin: 20px 0;
   max-width: 100%;
+  display: flex;
 }
 
 label {
@@ -54,9 +56,9 @@ label {
 .upload-btn {
   color: white;
   outline: 1px solid #EF8502;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 600;
-  padding: 5px 10px;
+  padding: 3px 10px;
 }
 
 .upload-btn {
@@ -76,17 +78,16 @@ label {
 
 .file-descr {
   margin: 0;
-  margin-top: 50px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   color: white;
-  font-size: 32px;
-  line-height: 32px;
+  font-size: 24px;
+  line-height: 24px;
   font-weight: 600;
   width: 36vw;
 }
 
 .upload {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .form {
@@ -117,4 +118,16 @@ label {
   display: flex;
   flex-direction: column;
   width: 40%;
+}
+
+@media(max-width: 1300px) {
+  .file-descr {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .file-btn {
+    font-size: 14px;
+  }
+
 }

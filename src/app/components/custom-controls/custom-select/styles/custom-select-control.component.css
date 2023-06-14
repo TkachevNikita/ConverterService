@@ -1,0 +1,84 @@
+.select {
+  position: relative;
+  height: 25px;
+  min-width: 100px;
+}
+
+.select {
+  padding: 5px 14px;
+  padding-bottom: 0;
+  border: 2px solid #EF8502;
+  border-radius: 12px;
+  width: 150px;
+}
+
+.select__dropdown {
+  display: none;
+  padding-bottom: 10px;
+  outline: 2px solid #EF8502;
+  position: absolute;
+  padding: 10px 0;
+  width: 100%;
+  left: 0px;
+  top: 31px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.select__dropdown,
+.select__current {
+  background-color: black;
+  color: #EF8502;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.select__option::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 7px;
+  border: 2px solid #EF8502;
+}
+
+.select__option.clicked::before {
+  content: "После клика";
+}
+
+.openDropDown {
+  display: block;
+}
+
+.select__option,
+.select__current {
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.select__current {
+  display: flex;
+  height: 100%;
+}
+
+.select__selected {
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+.select__selected:not(:last-child) {
+  margin-right: 5px;
+}
+
+.select-active {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.select__list {
+  padding: 0 14px;
+}

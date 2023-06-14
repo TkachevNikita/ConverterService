@@ -8,21 +8,13 @@ import { FormDataSevice } from 'src/app/services/form-data.service';
 import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatSelectModule,
-    HttpClientModule
-  ],
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
   public registrationForm: FormGroup;
+  public types: string[] = ['XLSX', 'CSV', 'TSV', 'HTML TABLE']
   public fileName!: string;
   @ViewChild('fileUpload', { static: true }) public fileUpload!: ElementRef;
 
@@ -44,6 +36,7 @@ export class FormComponent {
   }
 
   public onSubmit(): void {
+    console.log(this.registrationForm.value)
     const inputFiles = this.fileUpload.nativeElement;
     const formData = new FormData();
     if (inputFiles.files) {
@@ -51,5 +44,6 @@ export class FormComponent {
       formData.append('uploaded_file', file)
       this._formDataService.requestData(formData, this.registrationForm)
     }
+
   }
 }
