@@ -21,8 +21,8 @@
     <div class="form__input-container">
       <label for="userInput">Ввод:</label>
       <div class="form__group select__container">
-        <app-custom-select [formControlName]="'userType'" [options]="types" [multiple]="true"></app-custom-select>
-        <app-custom-select [formControlName]="'userType'" [options]="types" [multiple]="true"></app-custom-select>
+        <app-custom-select [formControlName]="'userType'" [options]="types" [placeholder]="placeholder1" [multiple]="false"></app-custom-select>
+        <app-custom-select [formControlName]="'userParams'" [options]="nullParams" [placeholder]="placeholder2" [multiple]="false"></app-custom-select>
       </div>
       <textarea id="input" placeholder="Вставьте содержимое файла" name="userInput" type="text" [formControlName]="'userInput'"></textarea>
     </div>
@@ -34,7 +34,12 @@
     <div class="form__input-container" style="justify-content: space-between;">
       <label for="userInput">Вывод:</label>
       <textarea id="input" [formControlName]="'userOutput'" placeholder="Отоформатированное содержимое" name="userInput" type="text"></textarea>
+
     </div>
+  </div>
+  <div class="btn-container">
+    <button class="btn-save" (click)="downloadJson()">Скачать</button>
+    <button class="btn-save" (click)="copyToClipboard()">Скопировать</button>
   </div>
 </form>
 

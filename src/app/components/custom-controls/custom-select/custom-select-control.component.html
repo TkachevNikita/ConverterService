@@ -1,11 +1,19 @@
 <div class="select" [ngClass]="{'select-active': dropDownIsOpen}">
   <div class="select__current" (click)="onOpenSelect()">
-    {{ drawValue() }}
+    <div class="select__placeholder" *ngIf="isEmpty">
+      {{ placeholder }}
+    </div>
+    {{ selectedItem && selectedItem.viewValue || viewSelectedList }}
   </div>
   <div class="select__dropdown" [ngClass]="{'openDropDown': dropDownIsOpen}">
     <ul class="select__list">
-      <li class="select__option" (click)="onSelect(option);" *ngFor="let option of options; let i = index;">
-        {{option}}
+      <li
+        class="select__option"
+        (click)="onSelect(option);"
+        [ngClass]="{'selected': selectedList.includes(option) || option && selectedItem && option.value === selectedItem.value}"
+        *ngFor="let option of options; let i = index;"
+      >
+        {{option.viewValue}}
       </li>
     </ul>
   </div>

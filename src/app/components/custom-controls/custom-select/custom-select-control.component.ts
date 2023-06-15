@@ -1,5 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { SelectModel } from 'src/app/models/type.model';
 
 @Component({
     selector: 'app-custom-select',
@@ -16,15 +17,19 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export class CustomSelectComponent implements ControlValueAccessor {
     public dropDownIsOpen: boolean = false;
-    @Input() public options!: string[];
-    public currentOption: string = '';
-    public selectedList: string[] = [];
-    public selectedItem!: string;
+    @Input() public options!: SelectModel[];
 
+    public viewSelectedList: string[] = []
+
+    public selectedList: SelectModel[] = [];
+    public selectedItem!: SelectModel;
+    public isEmpty: boolean = true;
+
+    @Input() public placeholder!: string;
     @Input() public multiple!: boolean;
     public value!: string;
     private _onTouched!: () => void;
-    private _onChange!: (value: string[] | string) => void;
+    private _onChange!: (value: string[] | string | null | (string | null)[]) => void;
 
     public writeValue(value: any): void {
         this.value = value;
@@ -34,18 +39,6 @@ export class CustomSelectComponent implements ControlValueAccessor {
     }
     public registerOnTouched(fn: any): void {
         this._onTouched = fn;
-    }
-
-    public drawValue(): string {
-        if (this.multiple) {
-            if (this.selectedList.length > 0) {
-              this.currentOption = this.selectedList.map(option => option).join(', ');
-            } else {}
-        } else if (this.selectedItem) {
-            this.currentOption = this.selectedItem + ' ' + this.selectedItem;
-        }
-
-        return this.currentOption;
     }
 
     public onOpenSelect(): void {
@@ -60,18 +53,26 @@ export class CustomSelectComponent implements ControlValueAccessor {
         this._onTouched();
     }
 
-    public onMultipleSelect(option: string): void {
+    public onMultipleSelect(option: SelectModel): void {
         if (this.selectedList.includes(option)) {
-            this.selectedList.splice(this.selectedList.indexOf(option), 1);
+            this.selectedList = this.selectedList.filter(item => item !== option);
+            this.viewSelectedList = this.selectedList.map(item => item?.viewValue)
+            if (this.selectedList.length > 0) {
+                this.isEmpty = false;
+            } else {
+              this.isEmpty = true;
+            }
 
             return;
         }
-        this.selectedList.push(option);
+        this.isEmpty = false;
+        this.selectedList = [...this.selectedList, option];
         const current = this.selectedList;
-        this._onChange(current);
+        this.viewSelectedList = current.map(item => item?.viewValue)
+        this._onChange(current.map(item => item?.value));
     }
 
-    public onSelect(option: string): void {
+    public onSelect(option: SelectModel): void {
         if (this.multiple) {
             this.onMultipleSelect(option);
         } else {
@@ -79,14 +80,16 @@ export class CustomSelectComponent implements ControlValueAccessor {
         }
     }
 
-    public onSingleSelect(option: string): void {
-        if (this.selectedItem !== undefined) {
+    public onSingleSelect(option: SelectModel): void {
+        if (this.selectedItem) {
             this.selectedItem = option;
-            this._onChange(option);
+            this._onChange(option?.value);
 
             return;
         }
+
+        this.isEmpty = false;
         this.selectedItem = option;
-        this._onChange(option);
+        this._onChange(option?.value);
     }
 }

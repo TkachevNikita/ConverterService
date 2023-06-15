@@ -26,6 +26,7 @@
 }
 
 .select__dropdown,
+.select__placeholder,
 .select__current {
   background-color: black;
   color: #EF8502;
@@ -33,13 +34,21 @@
   font-size: 18px;
 }
 
+.select__placeholder {
+  position: absolute;
+  top: 5px;
+}
+
 .select__option::before {
   content: "";
   width: 12px;
   height: 12px;
-  border-radius: 50%;
   margin-right: 7px;
-  border: 2px solid #EF8502;
+}
+
+.select__option.selected::before {
+  content: '☑';
+  align-self: flex-start;
 }
 
 .select__option.clicked::before {
@@ -63,6 +72,10 @@
 .select__current {
   display: flex;
   height: 100%;
+  width: 150px;
+  position: absolute;
+  top: 0;
+  background-color: transparent;
 }
 
 .select__selected {

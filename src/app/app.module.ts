@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { CustomSelectComponent } from './components/custom-controls/custom-select/custom-select-control.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     SelectComponent,
     ErrorModalComponent,
     CustomSelectComponent,
-    FormComponent
+    FormComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     MatSelectModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     FormDataSevice,

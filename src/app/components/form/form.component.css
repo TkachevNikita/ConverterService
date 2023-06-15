@@ -120,6 +120,26 @@ label {
   width: 40%;
 }
 
+.btn-save {
+  border: none;
+  font-size: 24px;
+  font-weight: 600;
+  background-color: #EF8502;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-save:first-child {
+  margin-right: 20px;
+}
+
+.btn-container {
+  float: right;
+  margin-top: 30px;
+}
+
 @media(max-width: 1300px) {
   .file-descr {
     font-size: 20px;
