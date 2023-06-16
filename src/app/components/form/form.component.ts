@@ -76,10 +76,10 @@ export class FormComponent {
     const inputFiles = this.fileUpload.nativeElement;
     const formData = new FormData();
     formData.append('body', this.registrationForm.controls['userInput'].value);
+    console.log(this.registrationForm.value);
     if (inputFiles.files.length > 0) {
       const file = inputFiles.files[0];
       formData.append('uploaded_file', file)
-      console.log(this.registrationForm.value);
       this._formDataService.fileRequestData(formData, this.registrationForm)
       return
     }

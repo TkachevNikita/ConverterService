@@ -40,13 +40,27 @@ export class FormDataSevice {
     this.http.post('http://localhost:8000/upload/text', registrationForm.controls['userInput'].value, options
      )
         .pipe(
+            // switchMap((response: any) => {
+
+            //   this.fileName = response.file_name;
+            //   console.log(this.fileName);
+            //   return this.http.get('http://localhost:8000/convert/' + this.fileName);
+            // })
             switchMap((response: any) => {
-
               this.fileName = response.file_name;
-              console.log(this.fileName);
-              return this.http.get('http://localhost:8000/convert/' + this.fileName);
-            })
+              return this.http.get('http://localhost:8000/headers/' + this.fileName);
+            }),
+            switchMap((response: any) => {
+              let queryParams = new HttpParams()
+                .set('parameters', JSON.stringify(this.getAllHeaders(response, registrationForm.controls['userType'].value)))
 
+                if (registrationForm.controls['userParams'].value !== null) {
+                  queryParams = queryParams.set('null_replacing', registrationForm.controls['userParams'].value);
+
+                }
+
+              return this.http.get('http://localhost:8000/convert/' + this.fileName, {params: queryParams});
+            })
         )
         .subscribe({
             next: (finalResponse: Object) => {

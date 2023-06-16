@@ -84,7 +84,6 @@ export class CustomSelectComponent implements ControlValueAccessor {
         if (this.selectedItem) {
             this.selectedItem = option;
             this._onChange(option?.value);
-
             return;
         }
 

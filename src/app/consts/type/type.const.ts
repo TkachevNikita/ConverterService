@@ -6,7 +6,7 @@ export const selectList: SelectModel[] = [
       viewValue: 'String'
   },
   {
-      value: 'numberrrr',
+      value: 'float',
       viewValue: 'Number'
   },
   {
