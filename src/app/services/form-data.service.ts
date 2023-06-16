@@ -37,7 +37,7 @@ export class FormDataSevice {
       headers: { 'Content-Type': 'text/plain' }
     }
 
-    this.http.post('http://localhost:8000/upload/text', registrationForm.controls['userInput'].value, options
+    this.http.post('http://45.12.236.36/upload/text', registrationForm.controls['userInput'].value, options
      )
         .pipe(
             // switchMap((response: any) => {
@@ -48,7 +48,7 @@ export class FormDataSevice {
             // })
             switchMap((response: any) => {
               this.fileName = response.file_name;
-              return this.http.get('http://localhost:8000/headers/' + this.fileName);
+              return this.http.get('http://45.12.236.36/headers/' + this.fileName);
             }),
             switchMap((response: any) => {
               let queryParams = new HttpParams()
@@ -59,7 +59,7 @@ export class FormDataSevice {
 
                 }
 
-              return this.http.get('http://localhost:8000/convert/' + this.fileName, {params: queryParams});
+              return this.http.get('http://45.12.236.36/convert/' + this.fileName, {params: queryParams});
             })
         )
         .subscribe({
@@ -75,11 +75,11 @@ export class FormDataSevice {
   }
 
   public fileRequestData(formData: FormData, registrationForm: FormGroup): void {
-      this.http.post('http://localhost:8000/upload', formData)
+      this.http.post('http://45.12.236.36/upload', formData)
           .pipe(
               switchMap((response: any) => {
                 this.fileName = response.file_name;
-                return this.http.get('http://localhost:8000/headers/' + this.fileName);
+                return this.http.get('http://45.12.236.36/headers/' + this.fileName);
               }),
               switchMap((response: any) => {
                 let queryParams = new HttpParams()
@@ -90,7 +90,7 @@ export class FormDataSevice {
 
                   }
 
-                return this.http.get('http://localhost:8000/convert/' + this.fileName, {params: queryParams});
+                return this.http.get('http://45.12.236.36/convert/' + this.fileName, {params: queryParams});
               })
           )
           .subscribe({

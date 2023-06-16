@@ -140,7 +140,7 @@ label {
   margin-top: 30px;
 }
 
-@media(max-width: 1300px) {
+@media(max-width: 1800px) {
   .file-descr {
     font-size: 20px;
     line-height: 20px;

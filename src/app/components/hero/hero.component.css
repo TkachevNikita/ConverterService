@@ -29,7 +29,7 @@
   padding-left: 40px;
 }
 
-@media(max-width: 1300px) {
+@media(max-width: 1800px) {
   .hero__descr,
   .hero__item {
     font-size: 20px;

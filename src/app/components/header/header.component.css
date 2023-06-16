@@ -10,7 +10,7 @@
   margin: 5px 0;
 }
 
-@media(max-width: 1300px) {
+@media(max-width: 1800px) {
   .header__logo svg {
       width: 130px;
       height: 60px;
